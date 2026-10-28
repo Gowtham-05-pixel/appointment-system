@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment System - v1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f6fb;
+            margin: 0;
+            padding: 40px 16px;
+        }
+        .container {
+            max-width: 480px;
+            margin: auto;
+            background: white;
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: 0 4px 18px #00000012;
+        }
+        h1 { color: #1d4ed8; }
+        label { display: block; margin-top: 16px; }
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 11px;
+            margin-top: 6px;
+        }
+        button {
+            width: 100%;
+            margin-top: 22px;
+            padding: 12px;
+            background: #1d4ed8;
+            color: white;
+            border: 0;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .message { color: #15803d; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Appointment System</h1>
+        <h2>Book an Appointment — v1</h2>
+
+        <p class="message">{{ message }}</p>
+
+        <form method="POST">
+            <label>Patient Name</label>
+            <input type="text" name="patient_name" required>
+
+            <label>Appointment Date</label>
+            <input type="date" name="appointment_date" required>
+
+            <label>Appointment Time</label>
+            <input type="time" name="appointment_time" required>
+
+            <label>Reason for Appointment</label>
+            <input type="text" name="reason" required>
+
+            <button type="submit">Book Appointment</button>
+        </form>
+    </div>
+</body>
+</html>

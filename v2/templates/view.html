@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Appointment System - v2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f6fb;
+            padding: 30px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+        }
+        h1 { color: #1d4ed8; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th { background: #1d4ed8; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Appointment System — v2</h1>
+        <h2>View Bookings</h2>
+
+        {% if appointments %}
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Patient Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Reason</th>
+            </tr>
+            {% for appointment in appointments %}
+            <tr>
+                <td>{{ appointment["id"] }}</td>
+                <td>{{ appointment["patient_name"] }}</td>
+                <td>{{ appointment["appointment_date"] }}</td>
+                <td>{{ appointment["appointment_time"] }}</td>
+                <td>{{ appointment["reason"] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>No appointments found. Book one using Version 1 first.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
