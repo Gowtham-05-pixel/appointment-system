@@ -2,6 +2,10 @@
 pipeline {
     agent any
 
+    environment {
+        PATH+DOCKER = 'C:\\Users\\GOWTHAM\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin'
+    }
+
     stages {
         stage('Checkout and Verify Files') {
             steps {
@@ -9,9 +13,10 @@ pipeline {
 
                 checkout scm
 
-                echo 'Checking project files...'
-
                 bat 'git --version'
+                bat 'where docker'
+                bat 'docker --version'
+
                 bat 'if exist v1\\app.py (echo Version 1 found) else (exit 1)'
                 bat 'if exist v2\\app.py (echo Version 2 found) else (exit 1)'
                 bat 'if exist v3\\app.py (echo Version 3 found) else (exit 1)'
@@ -29,8 +34,9 @@ pipeline {
                 bat 'docker build -f docker/Dockerfile --build-arg APP_VERSION=v2 -t appointment-system:v2 .'
                 bat 'docker build -f docker/Dockerfile --build-arg APP_VERSION=v3 -t appointment-system:v3 .'
 
-                echo 'All three Docker images built successfully!'
                 bat 'docker images appointment-system'
+
+                echo 'All three Docker images built successfully!'
             }
         }
     }
